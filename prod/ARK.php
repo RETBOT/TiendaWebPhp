@@ -3,7 +3,6 @@ include '../global/config.php';
 include '../global/conexion.php';
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +24,7 @@ include '../global/conexion.php';
     <nav class="navegacion">
         <a class="navegacion__enlace navegacion__enlace--activo" href="../index.html">Tienda</a>
         <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
+        <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
     </nav>
 
     <main class="contenedor">
@@ -35,9 +35,13 @@ include '../global/conexion.php';
             <div class="juego__contenido">
                 <p>Varado, desnudo, congelado y hambriento en una isla misteriosa, tendrás que cazar, cosechar, fabricar artículos, cultivar y construir refugios para sobrevivir. Usa tu astucia y destreza para matar, entrenar, criar y montar a los dinosaurios y criaturas primitivas que habitan ARK. Únete a cientos de jugadores en línea o intenta sobrevivir individualmente en una sesión offline.</p>
 
-                <form class="formulario">
-                    <input class="formulario__campo" type="number" placeholder="Cantidad" min="1" value="1"> 
+                <form method="post" class="formulario">
+                    <input type="hidden" id="Juego" name="Juego" value="ARK">
+                    <p class="producto__precio">Cantidad</p>
+                    <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
+                    <input type="hidden" id="Precio" name="Precio" value="529.00">
                     <p class="producto__precio">Precio $529.00</p>
+                    <input type="hidden" id="Imagen" name="Imagen" value="../img/16.jpg">
                     <input class="formulario__submit" type="submit" value="Agregar al Carrito">
                 </form>
             </div>

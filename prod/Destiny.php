@@ -24,8 +24,16 @@ include '../global/conexion.php';
     <nav class="navegacion">
         <a class="navegacion__enlace navegacion__enlace--activo" href="../index.html">Tienda</a>
         <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
-        <a class="navegacion__enlace" href="carrito/carrito.php">Carrito</a>
+        <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
     </nav>
+
+    
+    <div>
+        <?php 
+        print_r($_POST);
+        ?>
+    </div>
+
 
     <main class="contenedor">
         <h1>Destiny</h1>

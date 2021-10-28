@@ -24,8 +24,10 @@ include '../global/conexion.php';
     <nav class="navegacion">
         <a class="navegacion__enlace navegacion__enlace--activo" href="../index.html">Tienda</a>
         <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
+        <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
     </nav>
 
+ 
     <main class="contenedor">
         <h1>Assassin's Creed 2</h1>
 
@@ -36,11 +38,16 @@ include '../global/conexion.php';
                     <br>Assassin's Creed 2 mantiene la esencia de la jugabilidad que convirtió al primer juego en un éxito arrollador e introduce nuevas experiencias que sorprenderán y desafiarán a los jugadores.
                     <br>Assassin's Creed 2 es una historia épica de familia, venganza y conspiración que tiene lugar en el prístino, aunque brutal, trasfondo de una Italia renacentista. Ezio entabla amistad con Leonardo da Vinci, se enfrenta con las familias más poderosas de Florencia y se aventura por los canales de Venecia donde aprende a ser un maestro asesino.</p>
 
-                <form class="formulario">
-                    <input class="formulario__campo" type="number" placeholder="Cantidad" min="1" value="1"> 
+                <form method="post" class="formulario">
+                    <input type="hidden" id="Juego" name="Juego" value="Assassin's Creed 2">
+                    <p class="producto__precio">Cantidad</p>
+                    <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
+                    <input type="hidden" id="Precio" name="Precio" value="399.00">
                     <p class="producto__precio">Precio $399.00</p>
+                    <input type="hidden" id="Imagen" name="Imagen" value="../img/16.jpg">
                     <input class="formulario__submit" type="submit" value="Agregar al Carrito">
                 </form>
+
             </div>
         </div>
     </main>

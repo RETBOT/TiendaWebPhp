@@ -25,6 +25,7 @@ include '../global/conexion.php';
     <nav class="navegacion">
         <a class="navegacion__enlace navegacion__enlace--activo" href="../index.html">Tienda</a>
         <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
+        <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
     </nav>
 
     <main class="contenedor">
