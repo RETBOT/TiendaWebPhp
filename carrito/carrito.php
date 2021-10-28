@@ -1,3 +1,8 @@
+<?php
+include '../global/config.php';
+include '../global/conexion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,13 +30,31 @@
         <h1>Productos</h1>
         <div class="grid">
         <?php
-         echo "Sin productos"
+          $sentencia=$pdo->prepare("Select * from tblproductos");
+          $sentencia->execute();
+          $listProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
          ?>
+        <?php foreach($listProductos as $producto){ ?>
+            <div class="producto">
+                <a href="../prod/<?php echo $producto['Nombre'] ?>.php">
+                    <img class="producto__imagen" src="<?php echo $producto['Imagen'] ?>" alt="imagen juego">
+                    <div class="producto__informacion">
+                        <p class="producto__nombre"><?php echo $producto['Nombre'] ?></p>
+                        <?php $precio = $producto['Precio']*$producto['Cantidad']?>
+                        <p class="producto__precio">$<?php echo $precio ?></p>
+                        <p class="producto__precio">Cantidad: <?php echo $producto['Cantidad'] ?></p>
+                    </div>
+                </a>
+            </form>
+            </div>  <!--.producto-->
+        <?php } ?> 
         </div>
     </main>
 
     <footer class="footer">
-        <p class="footer__texto">VIDEO GAME STORE - Todos los derechos Reservados 2022.</p>
+        <p class="footer__texto">Roberto Esquivel Troncoso
+                        <br> Oscar Martinez Ruiz
+                        <br> - Todos los derechos Reservados 2022 -</p>
     </footer>
     
 </body>

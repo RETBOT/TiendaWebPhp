@@ -1,3 +1,9 @@
+
+<?php
+include '../global/config.php';
+include '../global/conexion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,26 +30,27 @@
 
     <main class="contenedor">
         <h1>Minecraft</h1>
-
         <div class="juego">
             <img class="juego__imagen" src="../img/1.jpg" alt="Imagen del Producto">
             <div class="juego__contenido">
                 <p>Explora mundos generados al azar y construye cosas increíbles, desde la más humilde de las casas hasta el más majestuoso de los castillos. Juega en el modo creativo con recursos ilimitados o extrae en las profundidades del mundo, crea armas y armaduras para defenderte de enemigos peligrosos en el modo supervivencia.</p>
-
-                <form action="../carrito/carrito.php" method="get" class="formulario">
-                    <input type="hidden" name="Juego" value="Minecraft">
-                    <input class="formulario__campo" type="number" placeholder="Cantidad" min="1" name="Cantidad" value="1" > 
+                    <form method="post" class="formulario">
+                    <input type="hidden" id="Juego" name="Juego" value="Minecraft">
+                    <p class="producto__precio">Cantidad</p>
+                    <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
+                    <input type="hidden" id="Precio" name="Precio" value="349.00">
                     <p class="producto__precio">Precio $349.00</p>
-                    <input type="hidden" name="Precio" value="349">
-                    <input type="hidden" name="Imagen" value="1">
-                    <input class="formulario__submit" type="submit" value="Agregar al Carrito">
-                </form>
+                    <input type="hidden" id="Imagen" name="Imagen" value="../img/1.jpg">
+                    <button class="formulario__submit" type="submit" value="Agregar">Agregar al carrito</button>
+                    </form>
             </div>
         </div>
     </main>
 
     <footer class="footer">
-        <p class="footer__texto">VIDEO GAME STORE - Todos los derechos Reservados 2022.</p>
+        <p class="footer__texto">Roberto Esquivel Troncoso
+                        <br> Oscar Martinez Ruiz
+                        <br> - Todos los derechos Reservados 2022 -</p>
     </footer>
     
 </body>
