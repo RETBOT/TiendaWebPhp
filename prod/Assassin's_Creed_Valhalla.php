@@ -28,6 +28,12 @@ include '../global/conexion.php';
         <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
     </nav>
 
+    <div>
+        <?php 
+        print_r($_POST);
+        ?>
+    </div>
+    
     <main class="contenedor">
         <h1>Assassin's Creed Valhalla</h1>
 

@@ -21,6 +21,12 @@ include '../global/conexion.php';
         </a>
     </header>
 
+    <div>
+        <?php 
+        print_r($_POST);
+        ?>
+    </div>
+
     <nav class="navegacion">
         <a class="navegacion__enlace navegacion__enlace--activo" href="../index.html">Tienda</a>
         <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>

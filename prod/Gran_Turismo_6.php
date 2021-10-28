@@ -20,6 +20,12 @@ include '../global/conexion.php';
             <img class="header__logo" src="../img/logo.png" alt="Logotipo">
         </a>
     </header>
+    
+    <div>
+        <?php 
+        print_r($_POST);
+        ?>
+    </div>
 
     <nav class="navegacion">
         <a class="navegacion__enlace navegacion__enlace--activo" href="../index.html">Tienda</a>
