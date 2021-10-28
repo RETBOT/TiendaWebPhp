@@ -26,12 +26,6 @@ include '../global/conexion.php';
         <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
         <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
     </nav>
-
-    <div>
-        <?php 
-        print_r($_POST);
-        ?>
-    </div>
     
     <main class="contenedor">
         <h1>Returnal</h1>
@@ -42,11 +36,15 @@ include '../global/conexion.php';
                 <p>Rompe el ciclo del caos en un planeta alienígena donde todo cambia constantemente.
                     <br>Tras un aterrizaje forzoso en este mundo cambiante, Selene debe explorar el paisaje desolado de una antigua civilización para escapar. Aislada y sola, tiene que pelear con uñas y dientes para sobrevivir, pero se ve derrotada una y otra vez, y no tiene más opción que volver a empezar su travesía cada vez que muere.</p>
 
-                <form class="formulario">
-                    <input class="formulario__campo" type="number" placeholder="Cantidad" min="1" value="1"> 
-                    <p class="producto__precio">Precio $1,499.99</p>
-                    <input class="formulario__submit" type="submit" value="Agregar al Carrito">
-                </form>
+                    <form method="post" class="formulario">
+                        <input type="hidden" id="Juego" name="Juego" value="Returnal">
+                        <p class="producto__precio">Cantidad</p>
+                        <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
+                        <input type="hidden" id="Precio" name="Precio" value="1,499.99">
+                        <p class="producto__precio">Precio $1,499.99</p>
+                        <input type="hidden" id="Imagen" name="Imagen" value="../img/20.jpg">
+                        <button class="formulario__submit" type="submit" value="Agregar">Agregar al carrito</button>
+                    </form>
             </div>
         </div>
     </main>

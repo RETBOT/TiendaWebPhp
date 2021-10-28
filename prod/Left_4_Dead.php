@@ -26,12 +26,6 @@ include '../global/conexion.php';
         <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
         <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
     </nav>
-
-    <div>
-        <?php 
-        print_r($_POST);
-        ?>
-    </div>
     
     <main class="contenedor">
         <h1>Left 4 Dead</h1>
@@ -43,10 +37,14 @@ include '../global/conexion.php';
                     <br>Ambientado justo tras el estallido del largamente anunciado Apocalipsis zombi, la dinámica de juego cooperativa de Left 4 Dead se desarrolla en cuatro extensas "películas" que transcurren en diversos entornos urbanos y rurales. Cada "película" tiene sus objetivos generales de equipo, consta de cinco grandes mapas y permite participar a entre uno y cuatro jugadores.
                     <br>Utiliza la nueva tecnología bautizada como "Director de IA" para generar por procedimiento una experiencia diferente cada vez que se juega. Al igual que en los filmes de Hollywood, el Director hace entrar en escenas nuevos monstruos, sonidos y escenas de acción según va ajustando la dinámica de la partida a la actuación del equipo.</p>
 
-                <form class="formulario">
-                    <input class="formulario__campo" type="number" placeholder="Cantidad" min="1" value="1"> 
-                    <p class="producto__precio">Precio $299.00</p>
-                    <input class="formulario__submit" type="submit" value="Agregar al Carrito">
+                <form method="post" class="formulario">
+                        <input type="hidden" id="Juego" name="Juego" value="Left 4 Dead">
+                        <p class="producto__precio">Cantidad</p>
+                        <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
+                        <input type="hidden" id="Precio" name="Precio" value="299.00">
+                        <p class="producto__precio">Precio $299.00</p>
+                        <input type="hidden" id="Imagen" name="Imagen" value="../img/13.jpg">
+                        <button class="formulario__submit" type="submit" value="Agregar">Agregar al carrito</button>
                 </form>
             </div>
         </div>
