@@ -26,12 +26,6 @@ include '../global/conexion.php';
         <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
         <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
     </nav>
-
-    <div>
-        <?php 
-        print_r($_POST);
-        ?>
-    </div>
     
     <main class="contenedor">
         <h1>Immortals Fenyx Rising</h1>
@@ -41,10 +35,14 @@ include '../global/conexion.php';
             <div class="juego__contenido">
                 <p>Immortals Fenyx Rising™ trae consigo una gran aventura mitológica. Juega como Fenyx, quien tiene la misión de salvar a los dioses griegos.</p>
 
-                <form class="formulario">
-                    <input class="formulario__campo" type="number" placeholder="Cantidad" min="1" value="1"> 
-                    <p class="producto__precio">Precio $479.60</p>
-                    <input class="formulario__submit" type="submit" value="Agregar al Carrito">
+                <form method="post" class="formulario">
+                        <input type="hidden" id="Juego" name="Juego" value="Immortals Fenyx Rising">
+                        <p class="producto__precio">Cantidad</p>
+                        <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
+                        <input type="hidden" id="Precio" name="Precio" value="479.60">
+                        <p class="producto__precio">Precio $479.60</p>
+                        <input type="hidden" id="Imagen" name="Imagen" value="../img/9.jpg">
+                        <button class="formulario__submit" type="submit" value="Agregar">Agregar al carrito</button>
                 </form>
             </div>
         </div>
