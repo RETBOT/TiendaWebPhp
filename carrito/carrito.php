@@ -22,8 +22,8 @@ include '../global/conexion.php';
     </header>
 
     <nav class="navegacion">
-        <a class="navegacion__enlace navegacion__enlace--activo" href="../index.html">Tienda</a>
-        <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
+        <a class="navegacion__enlace navegacion__enlace--activo" href="../index.php">Tienda</a>
+        <a class="navegacion__enlace" href="../nosotros.php">Nosotros</a>
         <a class="navegacion__enlace" href="Carrito.php">Carrito</a>
     </nav>
     <main class="contenedor">
@@ -51,11 +51,9 @@ include '../global/conexion.php';
         </div>
     </main>
 
-    <footer class="footer">
-        <p class="footer__texto">Roberto Esquivel Troncoso
-                        <br> Oscar Martinez Ruiz
-                        <br> - Todos los derechos Reservados 2022 -</p>
-    </footer>
+<?Php 
+include '../templates/pie.php';
+?>
     
 </body>
 </html>

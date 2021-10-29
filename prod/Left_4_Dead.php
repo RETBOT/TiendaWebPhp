@@ -1,32 +1,6 @@
 <?php
-include '../global/config.php';
-include '../global/conexion.php';
+include '../templates/includes.php'
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Left 4 Dead</title>
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="shortcut icon" href="../img/icono.png">
-</head>
-<body>
-    <header class="header">
-        <a href="../index.html">
-            <img class="header__logo" src="../img/logo.png" alt="Logotipo">
-        </a>
-    </header>
-
-    <nav class="navegacion">
-        <a class="navegacion__enlace navegacion__enlace--activo" href="../index.html">Tienda</a>
-        <a class="navegacion__enlace" href="../nosotros.html">Nosotros</a>
-        <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito</a>
-    </nav>
-    
     <main class="contenedor">
         <h1>Left 4 Dead</h1>
 
@@ -38,21 +12,21 @@ include '../global/conexion.php';
                     <br>Utiliza la nueva tecnología bautizada como "Director de IA" para generar por procedimiento una experiencia diferente cada vez que se juega. Al igual que en los filmes de Hollywood, el Director hace entrar en escenas nuevos monstruos, sonidos y escenas de acción según va ajustando la dinámica de la partida a la actuación del equipo.</p>
 
                 <form method="post" class="formulario">
+                <input type="hidden" id="ID" name="ID" value="13">
                         <input type="hidden" id="Juego" name="Juego" value="Left 4 Dead">
                         <p class="producto__precio">Cantidad</p>
                         <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
                         <input type="hidden" id="Precio" name="Precio" value="299.00">
                         <p class="producto__precio">Precio $299.00</p>
                         <input type="hidden" id="Imagen" name="Imagen" value="../img/13.jpg">
-                        <button class="formulario__submit" type="submit" value="Agregar">Agregar al carrito</button>
+                        <button class="formulario__submit" type="submit" value="Agregar" name="btnAccion">Agregar al carrito</button>
                 </form>
             </div>
         </div>
     </main>
 
-    <footer class="footer">
-        <p class="footer__texto">VIDEO GAME STORE - Todos los derechos Reservados 2022.</p>
-    </footer>
-    
+<?Php 
+include '../templates/pie.php';
+?>
 </body>
 </html>
