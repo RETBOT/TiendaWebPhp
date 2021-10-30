@@ -50,43 +50,39 @@ include '../templates/session.php';
                 </a>
             </form>
             </div>  <!--.producto-->
-        <?php } ?> 
-        <center>
-        <table class="table table-ligth table-bordere">
+        <?php } ?>
+        <center></center><h3>
+        <?php if(!empty( $_SESSION['CARRITO'])) { ?>
+        <table style="border-collapse: collapse;" border="1"; width="520">
                     <tr>
-                        <th width="40%">Imagen</th>
+                        <th width="100%">Imagen</th>
                         <th width="30%">Juego</th>
                         <th width="15%">Cantidad</th>
                         <th width="20%">Precio</th>
                         <th width="20%">Total</th>
                         <th width="5%">--</th>
                     </tr>
+                    <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                     <tr>
-                        <td width="40%"> <a href="../prod/Minecraft.php"></td>
-                        <td width="30%">Minecraft</td>
-                        <td width="15%">2</td>
-                        <td width="20%">$349.00</td>
-                        <td width="20%">$689.00</td>
+                        <td width="100%"><img class="producto__imagen" src="<?php echo $producto['Imagen'] ?>" alt="imagen juego"></td>
+                        <td width="30%"><?php echo $producto['Juego'] ?></td>
+                        <td width="15%"><?php echo $producto['Cantidad'] ?></td>
+                        <td width="20%"><?php echo $producto['Precio'] ?></td>
+                        <td width="20%"><?php echo $producto['Precio']*$producto['Cantidad'] ?></td>
                         <td width="5%"><button type="button" class="btn btn-danger">Eliminar</button></td>
                     </tr>
+                    <?php } ?>
                     <tr>
-                        <td width="50%"> <a href="../prod/Minecraft.php"></td>
-                        <td width="30%">Minecraft</td>
-                        <td width="15%">2</td>
-                        <td width="20%">$349.00</td>
-                        <td width="20%">$689.00</td>
-                        <td width="5%"><button type="button" class="btn btn-danger">Eliminar</button></td>
+                        <td colspan="4" align="right">Total</td>
+                        <td align="right"><?php echo number_format(300,2);?></td>
+                        <td></td>
                     </tr>
-                    <tr>
-                        <td width="40%"> <a href="../prod/Minecraft.php"></td>
-                        <td width="30%">Minecraft</td>
-                        <td width="15%">2</td>
-                        <td width="20%">$349.00</td>
-                        <td width="20%">$689.00</td>
-                        <td width="5%"><button type="button" class="btn btn-danger">Eliminar</button></td>
-                    </tr>
-            </table>
-        </center>
+            </table></h3>
+            <?php } else { ?>
+                <div class="alert alert-succes">
+                    No hay productos en el carrito..
+                </div>
+            <?php } ?>
         </div>
     </main>
 
