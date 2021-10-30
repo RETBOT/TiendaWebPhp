@@ -1,10 +1,6 @@
 <?php
 include '../templates/includes.php'
 ?>
-    <?php
-    echo $mensaje;
-    ?>
-
     <main class="contenedor">
         <h1>Gears of war 5</h1>
 
