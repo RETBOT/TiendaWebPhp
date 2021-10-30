@@ -1,6 +1,7 @@
 <?php
 include '../global/config.php';
 include '../global/conexion.php';
+include '../templates/session.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ include '../global/conexion.php';
 </head>
 <body>
     <header class="header">
-        <a href="../index.html">
+        <a href="../index.php">
             <img class="header__logo" src="../img/logo.png" alt="Logotipo">
         </a>
     </header>
@@ -24,7 +25,9 @@ include '../global/conexion.php';
     <nav class="navegacion">
         <a class="navegacion__enlace navegacion__enlace--activo" href="../index.php">Tienda</a>
         <a class="navegacion__enlace" href="../nosotros.php">Nosotros</a>
-        <a class="navegacion__enlace" href="Carrito.php">Carrito</a>
+        <a class="navegacion__enlace" href="Carrito.php">Carrito (<?php 
+            echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
+        ?>)</a>
     </nav>
     <main class="contenedor">
         <h1>Productos</h1>
@@ -48,6 +51,42 @@ include '../global/conexion.php';
             </form>
             </div>  <!--.producto-->
         <?php } ?> 
+        <center>
+        <table class="table table-ligth table-bordere">
+                    <tr>
+                        <th width="40%">Imagen</th>
+                        <th width="30%">Juego</th>
+                        <th width="15%">Cantidad</th>
+                        <th width="20%">Precio</th>
+                        <th width="20%">Total</th>
+                        <th width="5%">--</th>
+                    </tr>
+                    <tr>
+                        <td width="40%"> <a href="../prod/Minecraft.php"></td>
+                        <td width="30%">Minecraft</td>
+                        <td width="15%">2</td>
+                        <td width="20%">$349.00</td>
+                        <td width="20%">$689.00</td>
+                        <td width="5%"><button type="button" class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <td width="50%"> <a href="../prod/Minecraft.php"></td>
+                        <td width="30%">Minecraft</td>
+                        <td width="15%">2</td>
+                        <td width="20%">$349.00</td>
+                        <td width="20%">$689.00</td>
+                        <td width="5%"><button type="button" class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <td width="40%"> <a href="../prod/Minecraft.php"></td>
+                        <td width="30%">Minecraft</td>
+                        <td width="15%">2</td>
+                        <td width="20%">$349.00</td>
+                        <td width="20%">$689.00</td>
+                        <td width="5%"><button type="button" class="btn btn-danger">Eliminar</button></td>
+                    </tr>
+            </table>
+        </center>
         </div>
     </main>
 

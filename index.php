@@ -190,9 +190,8 @@ include 'templates/cabeceraPrincipal.php';
             <div class="grafico grafico--ps4"></div>
         </div>
     </main>
-
 <?Php 
-include '../templates/pie.php';
+include 'templates/pie.php';
 ?>
     
 </body>

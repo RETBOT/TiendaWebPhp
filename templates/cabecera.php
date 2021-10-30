@@ -16,7 +16,7 @@ include '../templates/session.php';
 </head>
 <body>
     <header class="header">
-        <a href="../index.html">
+        <a href="../index.php">
             <img class="header__logo" src="../img/logo.png" alt="Logotipo">
         </a>
     </header>

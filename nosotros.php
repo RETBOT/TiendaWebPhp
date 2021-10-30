@@ -53,8 +53,7 @@ include 'templates/cabeceraPrincipal.php';
     </section> 
 
 <?Php 
-include '../templates/pie.php';
+include 'templates/pie.php';
 ?>
-    
 </body>
 </html>
