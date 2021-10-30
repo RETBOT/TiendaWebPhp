@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 
 
@@ -61,6 +59,20 @@ if(isset($_POST['btnAccion'])){
                 $mensaje = print_r($_SESSION,true);
             }
         break;
+        case "Eliminar":
+            if(is_numeric($_POST['ID'])){
+                $ID = $_POST['ID'];
+                foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                    if($producto['ID']==$ID){
+                        unset($_SESSION['CARRITO'][$indice]);
+                        echo "<script>alert('Elemento borrado ...');</script>";
+                    }
+                        
+                }
+            }else{
+                $mensaje.= "Upss.., id no correcto ".$ID; 
+            }
+            break;
     }
 }
 

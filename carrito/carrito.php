@@ -36,6 +36,7 @@ include '../templates/session.php';
           $sentencia=$pdo->prepare("Select * from tblproductos");
           $sentencia->execute();
           $listProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+          $total = 0;
          ?>
         <?php foreach($listProductos as $producto){ ?>
             <div class="producto">
@@ -67,20 +68,28 @@ include '../templates/session.php';
                         <td width="100%"><img class="producto__imagen" src="<?php echo $producto['Imagen'] ?>" alt="imagen juego"></td>
                         <td width="30%"><?php echo $producto['Juego'] ?></td>
                         <td width="15%"><?php echo $producto['Cantidad'] ?></td>
-                        <td width="20%"><?php echo $producto['Precio'] ?></td>
-                        <td width="20%"><?php echo $producto['Precio']*$producto['Cantidad'] ?></td>
-                        <td width="5%"><button type="button" class="btn btn-danger">Eliminar</button></td>
+                        <td width="20%"><?php echo '$'.$producto['Precio'] ?></td>
+                        <td width="20%"><?php echo '$'.number_format($producto['Precio']*$producto['Cantidad'],2) ?></td>
+                        <td width="5%">
+                            <form action="" method="post">
+                                <input type="hidden" name="ID" value="<?Php echo $producto['ID'];?>">
+                                <button type="submit" class="btn btn-danger" name="btnAccion" value="Eliminar">Eliminar</button>
+                            </form>
+                        </td>
+                        
                     </tr>
+                        <?php 
+                        $total = $total+($producto['Precio']*$producto['Cantidad']);?>
                     <?php } ?>
                     <tr>
                         <td colspan="4" align="right">Total</td>
-                        <td align="right"><?php echo number_format(300,2);?></td>
+                        <td align="right"><?php echo '$'.number_format($total,2);?></td>
                         <td></td>
                     </tr>
             </table></h3>
             <?php } else { ?>
                 <div class="alert alert-succes">
-                    No hay productos en el carrito..
+                    <h3>No hay productos en el carrito..</h3>
                 </div>
             <?php } ?>
         </div>
