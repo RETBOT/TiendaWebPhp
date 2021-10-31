@@ -14,7 +14,7 @@ include '../templates/includes.php'
                     <input type="hidden" id="ID" name="ID" value="16">
                     <input type="hidden" id="Juego" name="Juego" value="ARK">
                     <p class="producto__precio">Cantidad</p>
-                    <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
+                    <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo" placeholder="Cantidad" value="1"> 
                     <input type="hidden" id="Precio" name="Precio" value="529.00">
                     <p class="producto__precio">Precio $529.00</p>
                     <input type="hidden" id="Imagen" name="Imagen" value="../img/16.jpg">
