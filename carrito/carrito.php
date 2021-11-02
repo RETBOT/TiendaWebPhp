@@ -50,7 +50,7 @@
                             <form action="pagar.php" method="post">
                             <div>
                                 <label for="my-input">Correo de contacto:</label>
-                                <input id="email" name="email" type="email" placeholder="Por favor escribe tú correo" require style="width: 30%;">
+                                <input required id="email" name="email" type="email" placeholder="Por favor escribe tú correo" style="width: 30%;">
                                 <small id="emailHelp" class="form-text text-muted">
                                         <br>Los productos se enviarán a este correo.
                                 </small>
