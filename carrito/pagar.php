@@ -58,7 +58,7 @@ foreach ($_SESSION['CARRITO'] as $indice => $producto) {
             <!-- Set up a container element for the button -->
             <center><div id="paypal-button-container"></div></center>
             <h3>(Para mas aclaraciones: gamesstorevideo@gmail.com )</h3>
-
+            
             </html>
         </div>
     </main>
