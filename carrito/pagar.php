@@ -48,7 +48,7 @@ foreach ($_SESSION['CARRITO'] as $indice => $producto) {
     
     <!-- Include the PayPal JavaScript SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=test&currency=MXN"></script>
-    
+
     <main class="contenedor">
         <h1>¡Paso Final!</h1>
         <div class="producto">
@@ -84,11 +84,12 @@ foreach ($_SESSION['CARRITO'] as $indice => $producto) {
                     // Successful capture! For demo purposes:
                     console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                     var transaction = orderData.purchase_units[0].payments.captures[0];
-                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                    //alert('Transaction '+ transaction.status + ': ' + transaction.id);
+                    window.location="verificador.php?paymentToken="+transaction.id+"&orderData="+JSON.stringify(orderData,null,2)+"&SID=<?php echo $SID ?>"+"&ID=<?php echo $idVenta ?>";
                     // Replace the above to show a success message within this page, e.g.
-                    // const element = document.getElementById('paypal-button-container');
-                    // element.innerHTML = '';
-                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                     //const element = document.getElementById('paypal-button-container');
+                      //element.innerHTML = '';
+                    //element.innerHTML = '<h3>¡Gracas por tu compra!</h3>';
                     // Or go to another URL:  actions.redirect('thank_you.html');
                 });
             }
