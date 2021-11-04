@@ -56,9 +56,9 @@ require_once '../libreria/dompdf/autoload.inc.php';
             <h3 style="text-align: center;">Recibo de compra</h3>
             <center>
             <?php if(!empty( $_SESSION['CARRITO'])) { ?>
-        <table style="border-collapse: collapse;"  border="5"  bordercolor="#1FC52E">
+        <table style="border-collapse: collapse; text-align: center;"  border="5"  bordercolor="#1FC52E">
                     <tr>
-                        <th width="25%">Imagen</th>
+                        <th width="10%">Imagen</th>
                         <th width="30%">Juego</th>
                         <th width="15%">Cantidad</th>
                         <th width="20%">Precio</th>
