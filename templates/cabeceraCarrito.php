@@ -29,3 +29,10 @@ include '../templates/session.php';
             echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
         ?>)</a>
     </nav>
+
+    <?php
+          $sentencia=$pdo->prepare("Select * from tblproductos");
+          $sentencia->execute();
+          $listProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+          $total = 0;
+    ?>

@@ -4,9 +4,6 @@ include '../global/conexion.php';
 include '../templates/session.php';
 ?>
 
-
-<?php //print_r($_POST)  ?>
-
 <?php 
 if($_POST){
     $IDVENTA = $_POST['IDVENTA'];
@@ -51,6 +48,8 @@ if($_POST){
 
     }else{
         echo "<script>alert('Tus descargas se agotaron.');</script>";
+        echo "<h3>Tus descargas se agotaron.</h3>";
+        echo "<input type=button value=Regresar onClick=history.go(-1);>";
     }
 }
 

@@ -2,12 +2,6 @@
 
     <main class="contenedor">
         <h1>Productos</h1>
-        <?php
-          $sentencia=$pdo->prepare("Select * from tblproductos");
-          $sentencia->execute();
-          $listProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-          $total = 0;
-         ?>
        
         <center></center>
         <h3>

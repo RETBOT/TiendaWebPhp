@@ -56,8 +56,10 @@ if($state=="COMPLETED"){
 ?>
 
 
+
 <div>
     <div>
+    <meta http-equiv="refresh" content="10" />
         <h1>¡Listo!</h1>
         <hr>
         <p><?php echo $mensajePaypal ?></p>
@@ -69,30 +71,40 @@ if($state=="COMPLETED"){
                 $sentencia->execute();
 
                 $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-                print_r($listaProductos);
+                //print_r($listaProductos);
             }
         ?>
         <h3><center><table style=" text-align: center; border-collapse: collapse; height: 50%; width: 50%;"  border="5"  bordercolor="#1FC52E">
                     <tr>
                         <th width="20%">Imagen</th>
                         <th width="30%">Juego</th>
+                        <th width="30%">Cantidad</th>
+                        <th width="30%">Descargado</th>
                         <th width="5%">Descargar</th>
                     </tr>
                     <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                     <tr>
                         <td width="25%"><img class="producto__imagen" src="<?php echo $producto['Imagen'] ?>" alt="imagen juego"></td>
                         <td width="30%"><?php echo $producto['Juego'] ?></td>
+                        <td width="30%"><?php echo $producto['Cantidad'] ?></td>
+                        <td width="30%"><?php echo $listaProductos[$indice]['DESCARGADO'] ?></td>
                         <td width="5%">
+                            <?php if($listaProductos[$indice]['DESCARGADO']<$producto['Cantidad']) { ?>
                             <form action="descargas.php" method="POST">
                                 <input type="hidden" name="IDVENTA" value="<?php echo $IDVenta?>">
                                 <input type="hidden" name="IDPRODUCTO" value="<?php echo $producto['ID'] ?>">
                                 <input type="hidden" name="CANTIDAD" value="<?php echo $producto['Cantidad'] ?>">
                                 <button style="background-color:#1FC52E;" type="submit">Descagrar</button>
                             </form>
+                            <?php } else {?>
+                                <button style="background-color:#1FC52E;" type="button" disabled >Descagrar</button>
+                            <?php } ?>
                         </td>
-                        
                     </tr>
                     <?php } ?>
+                    <tr>
+                        <td colspan="5"> <button style="background-color:#1FC52E;" type="submit">Recibo de compra</button></td>
+                    </tr>
             </table></center></h3>
 
 
