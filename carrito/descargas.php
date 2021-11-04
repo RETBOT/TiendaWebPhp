@@ -29,8 +29,6 @@ if($_POST){
         $nombreArchivo="../archivos/".$listaProductos[0]['IDPRODUCTO'].".pdf";
         $nuevoNombreArchivo=$_POST['IDVENTA'].$_POST['IDPRODUCTO'].".pdf";
 
-        echo $nuevoNombreArchivo;
-
         header("Content-Transfer-Encoding: binary");
         header("Content-type: application/force-download");
         header("Content-Disposition: attachment; filename=$nuevoNombreArchivo");
@@ -47,9 +45,15 @@ if($_POST){
 
 
     }else{
-        echo "<script>alert('Tus descargas se agotaron.');</script>";
+        echo "<head>";
+        echo "<Title>Descargas agotadas</Title>";
+        echo "<link rel=stylesheet href=../css/normalize.css>";
+        echo "<link href=https://fonts.googleapis.com/css2?family=Staatliches&display=swap rel=stylesheet>";
+        echo "<link rel=stylesheet href=../css/style.css>";
+        echo "</head>";
+
         echo "<h3>Tus descargas se agotaron.</h3>";
-        echo "<input type=button value=Regresar onClick=history.go(-1);>";
+        echo "<center><h3><input type=button value=Regresar onClick=history.go(-1); style=background-color:#1FC52E;></center></h3>";
     }
 }
 

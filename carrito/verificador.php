@@ -80,7 +80,6 @@ if ($state == "COMPLETED") {
                         <th width="20%">Imagen</th>
                         <th width="30%">Juego</th>
                         <th width="30%">Cantidad</th>
-                        <th width="30%">Descargado</th>
                         <th width="5%">Descargar</th>
                     </tr>
                     <?php foreach ($_SESSION['CARRITO'] as $indice => $producto) { ?>
@@ -88,7 +87,6 @@ if ($state == "COMPLETED") {
                             <td width="25%"><img class="producto__imagen" src="<?php echo $producto['Imagen'] ?>" alt="imagen juego"></td>
                             <td width="30%"><?php echo $producto['Juego'] ?></td>
                             <td width="30%"><?php echo $producto['Cantidad'] ?></td>
-                            <td width="30%"><?php echo $listaProductos[$indice]['DESCARGADO'] ?></td>
                             <td width="5%">
                                 <?php if ($listaProductos[$indice]['DESCARGADO'] < $producto['Cantidad']) { ?>
                                     <form action="descargas.php" method="POST">
