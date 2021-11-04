@@ -30,7 +30,6 @@ foreach ($_SESSION['CARRITO'] as $indice => $producto) {
     $sentencia->bindParam(":PRECIOUNITARIO", $producto['Precio']);
     $sentencia->bindParam(":CANTIDAD", $producto['Cantidad']);
     $sentencia->execute();
-    $idVenta = $pdo->lastInsertId();
 }
 ?>
 
@@ -58,7 +57,6 @@ foreach ($_SESSION['CARRITO'] as $indice => $producto) {
             <!-- Set up a container element for the button -->
             <center><div id="paypal-button-container"></div></center>
             <h3>(Para mas aclaraciones: gamesstorevideo@gmail.com )</h3>
-            
             </html>
         </div>
     </main>

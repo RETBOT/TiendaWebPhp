@@ -27,10 +27,8 @@ $total = $objDatosTransaccion->purchase_units[0]->amount->value;
 $currency = $objDatosTransaccion->purchase_units[0]->amount->currency_code;
 $SID = $_GET['SID'];
 $IDVenta = $_GET['ID'];
-echo $IDVenta;
 
 curl_close($Login); 
-echo $state;
 if($state=="COMPLETED"){
     $mensajePaypal = "<center><h3>Pago aprovado</h3></center>";
     
