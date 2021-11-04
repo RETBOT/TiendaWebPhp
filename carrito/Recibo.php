@@ -2,10 +2,26 @@
 include '../global/config.php';
 include '../global/conexion.php';
 include '../templates/session.php';
+require_once '../libreria/dompdf/autoload.inc.php';
 ?>
 <?php
-if ($_POST) {
+    //pdf 
+    use Dompdf\Dompdf;
+    $dompdf = new Dompdf();
+
+    $opcion = $dompdf->getOptions();
+    $opcion->set(array('isRemoteEnabled' => true));
+    $dompdf->setOptions($opcion);
+
+    $dompdf->loadHtml("Hola Mundo");
+
+    $dompdf->setPaper('letter');
+    //$dompdf->setPaper('A4','landscope');
+    $dompdf->render();
+    $dompdf->stream("recibo.pdf",array("Attachment" => false));
+ 
     $IDVENTA = $_POST['IDVENTA'];
+      // Informacion del usuario 
     $sentencia=$pdo->prepare("SELECT * FROM `tblventas` where ID=:ID");
     $sentencia->bindParam(":ID", $IDVENTA);
     $sentencia->execute();
@@ -24,7 +40,20 @@ if ($_POST) {
     $nombre = $objRespuesta->payer->name->given_name;
     $apellido = $objRespuesta->payer->name->surname;
 
-    print_r($objRespuesta);
-    //print_r($apellido);
-}
+    // informacion de los prouctos comprados por el usuario 
+    $sentenciaProductos = $pdo->prepare("SELECT * FROM 
+    tbldetalleventa, tblproductos 
+    WHERE tbldetalleventa.IDPRODUCTO=tblproductos.ID 
+    and tbldetalleventa.IDVENTA=:ID");
+    $sentenciaProductos->bindParam(":ID", $IDVENTA);
+    $sentenciaProductos->execute();
+    $listaProducto = $sentenciaProductos->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($_SESSION['CARRITO'] as $indice => $producto) {
+        $NombresJuegos = $listaProducto[$indice]['Nombre'];
+        $PrecioJuegos = $listaProducto[$indice]['PRECIOUNITARIO'];
+        $CantidadJuegos = $listaProducto[$indice]['CANTIDAD'];
+    //print_r($CantidadJuegos);
+    }
+    //print_r($listaProducto);
 ?>
