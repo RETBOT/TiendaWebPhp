@@ -1,4 +1,4 @@
-<?php include '../templates/cabeceraCarrito' ?>
+<?php include '../templates/cabeceraCarrito.php' ?>
 
 <?php
 
@@ -83,7 +83,7 @@ foreach ($_SESSION['CARRITO'] as $indice => $producto) {
                     console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                     var transaction = orderData.purchase_units[0].payments.captures[0];
                     //alert('Transaction '+ transaction.status + ': ' + transaction.id);
-                    window.location="verificador.php?paymentToken="+transaction.id+"&orderData="+JSON.stringify(orderData,null,2)+"&SID=<?php echo $SID ?>"+"&ID=<?php echo $idVenta ?>";
+                    window.location="verificador.php?paymentToken="+transaction.id+"&orderData="+JSON.stringify(orderData,null,2)+"&SID=<?php echo $SID ?>"+"&ID=<?php echo $idVenta ?>"+"&Cantidad=<?Php $producto['Cantidad']?>";
                     // Replace the above to show a success message within this page, e.g.
                      //const element = document.getElementById('paypal-button-container');
                       //element.innerHTML = '';

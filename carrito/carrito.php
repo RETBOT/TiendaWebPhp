@@ -1,4 +1,4 @@
-<?php include '../templates/cabeceraCarrito'?>
+<?php include '../templates/cabeceraCarrito.php'?>
 
     <main class="contenedor">
         <h1>Productos</h1>

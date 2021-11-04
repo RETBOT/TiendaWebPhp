@@ -18,7 +18,8 @@ include '../templates/includes.php'
                     <input type="hidden" id="Precio" name="Precio" value="529.00">
                     <p class="producto__precio">Precio $529.00</p>
                     <input type="hidden" id="Imagen" name="Imagen" value="../img/16.jpg">
-                    <button class="formulario__submit" type="submit" value="Agregar" name="btnAccion" >Agregar al carrito</button>                </form>
+                    <button class="formulario__submit" type="submit" value="Agregar" name="btnAccion" >Agregar al carrito</button>                
+                </form>
             </div>
         </div>
     </main>
