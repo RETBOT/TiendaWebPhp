@@ -1,0 +1,2 @@
+Base de datos usada en el proyecto
+Importar en el servidor
