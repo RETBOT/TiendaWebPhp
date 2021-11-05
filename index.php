@@ -12,7 +12,6 @@ include 'templates/cabeceraPrincipal.php';
                         <p class="producto__precio">$349.00</p>
                     </div>
                 </a>
-            </form>
             </div>  <!--.producto-->
             <div class="producto">
                 <a href="prod/Resident_Evil_2.php">
