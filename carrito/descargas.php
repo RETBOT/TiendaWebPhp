@@ -33,7 +33,7 @@ if($_POST){
         header("Content-type: application/force-download");
         header("Content-Disposition: attachment; filename=$nuevoNombreArchivo");
         readfile("$nombreArchivo");
-       
+       // aumentan las descargas 
         $sentencia=$pdo->prepare("UPDATE `tbldetalleventa`
                             SET DESCARGADO=DESCARGADO+1
                             WHERE IDVENTA=:IDVENTA 
@@ -41,6 +41,13 @@ if($_POST){
         
         $sentencia->bindParam(":IDVENTA",$IDVENTA);
         $sentencia->bindParam(":IDPRODUCTO",$IDPRODUCTO);
+        $sentencia->execute();
+        // disminuye la cantidad disponible del producto 
+        $sentencia=$pdo->prepare("UPDATE `tblproductos`
+                            SET Disponible=Disponible-1
+                            WHERE ID=:ID");
+        
+        $sentencia->bindParam(":ID",$IDPRODUCTO);
         $sentencia->execute();
 
 

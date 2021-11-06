@@ -25,6 +25,13 @@ require_once '../libreria/dompdf/autoload.inc.php';
     $correo = $objRespuesta->payer->email_address;
     $nombre = $objRespuesta->payer->name->given_name;
     $apellido = $objRespuesta->payer->name->surname;
+
+    // imagen de los productos
+    $sentencia2=$pdo->prepare("SELECT * FROM `tbldetalleventa` where `IDVENTA` = :ID");
+    $sentencia2->bindParam(":ID", $IDVENTA);
+    $sentencia2->execute();
+    $listaJuegos = $sentencia2->fetchAll(PDO::FETCH_ASSOC);
+
   ?>
     <html>
         <head>
@@ -60,7 +67,7 @@ require_once '../libreria/dompdf/autoload.inc.php';
                     </tr>
                     <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                     <tr>
-                        <td width="10%"><img width="100" height="150" class="producto__imagen" src="http://<?php echo $_SERVER['HTTP_HOST'].'/TiendaWebPhp/img/'.$producto['Imagen'] ?>" alt="imagen juego"></td>
+                        <td width="10%"><img width="100" height="150" class="producto__imagen" src="http://<?php echo $_SERVER['HTTP_HOST'].'/TiendaWebPhp/img/'.$listaJuegos[$indice]['ID'].".jpg" ?>" alt="imagen juego"></td>
                         <td width="30%"><?php echo $producto['Juego'] ?></td>
                         <td width="15%"><?php echo $producto['Cantidad'] ?></td>
                         <td width="20%"><?php echo '$'.$producto['Precio'] ?></td>

@@ -1,25 +1,30 @@
+
 <?php
-include '../templates/includes.php'
+include '../templates/includes.php';
+?>
+<?php
+          $sentencia=$pdo->prepare("Select * from tblproductos where ID=9");
+          $sentencia->execute();
+          $listProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
     <main class="contenedor">
-        <h1>Immortals Fenyx Rising</h1>
-
+        <h1><?php echo $listProductos[0]['Nombre'] ?></h1>
         <div class="juego">
-            <img class="juego__imagen" src="../img/9.jpg" alt="Imagen del Producto">
+            <img class="juego__imagen" src="<?php echo $listProductos[0]['Imagen'] ?>" alt="Imagen del Producto">
             <div class="juego__contenido">
-                <p>Immortals Fenyx Rising™ trae consigo una gran aventura mitológica. Juega como Fenyx, quien tiene la misión de salvar a los dioses griegos.</p>
-
-                <form method="post" class="formulario">
-                        <input type="hidden" id="ID" name="ID" value="9">
-                        <input type="hidden" id="Juego" name="Juego" value="Immortals Fenyx Rising">
+                <p><?php echo $listProductos[0]['Descripcion'] ?></p>
+                    <form method="post" class="formulario">
+                        <input type="hidden" id="ID" name="ID" value="<?php echo $listProductos[0]['ID'] ?>">
+                        <input type="hidden" id="Juego" name="Juego" value="<?php echo $listProductos[0]['Nombre'] ?>">
                         <p class="producto__precio">Cantidad</p>
                         <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
-                        <input type="hidden" id="Precio" name="Precio" value="479.60">
-                        <p class="producto__precio">Precio $479.60</p>
-                        <input type="hidden" id="Imagen" name="Imagen" value="../img/9.jpg">
-                        <button class="formulario__submit" type="submit" value="Agregar" name="btnAccion">Agregar al carrito</button>
-                </form>
+                        <input type="hidden" id="Precio" name="Precio" value="<?php echo $listProductos[0]['Precio']?>">
+                        <p class="producto__precio">Precio $<?php echo $listProductos[0]['Precio']?></p>
+                        <p class="producto__precio">Disponibles: <?php echo $listProductos[0]['Disponible'] ?> Unidades</p>
+                        <input type="hidden" id="Imagen" name="Imagen" value=" <?php echo $listProductos[0]['Imagen'] ?>">
+                        <button class="formulario__submit" type="submit" value="Agregar" name="btnAccion" >Agregar al carrito</button>
+                    </form>
             </div>
         </div>
     </main>
@@ -27,6 +32,5 @@ include '../templates/includes.php'
 <?Php 
 include '../templates/pie.php';
 ?>
-    
 </body>
 </html>
