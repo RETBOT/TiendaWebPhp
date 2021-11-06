@@ -60,7 +60,7 @@ if($_POST){
         echo "</head>";
 
         echo "<h3>Tus descargas se agotaron.</h3>";
-        echo "<center><h3><input type=button value=Regresar onClick=history.go(-1); style=background-color:#1FC52E;></center></h3>";
+        echo "<center><h3><input type=button value=Regresar onClick=history.go(-1); style=background-color:#1FC52E;></h3></center>";
     }
 }
 
