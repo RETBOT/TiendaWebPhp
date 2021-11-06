@@ -42,6 +42,7 @@ if($_POST){
         $sentencia->bindParam(":IDVENTA",$IDVENTA);
         $sentencia->bindParam(":IDPRODUCTO",$IDPRODUCTO);
         $sentencia->execute();
+        
         // disminuye la cantidad disponible del producto 
         $sentencia=$pdo->prepare("UPDATE `tblproductos`
                             SET Disponible=Disponible-1

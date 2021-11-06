@@ -18,7 +18,7 @@ include '../templates/includes.php';
                         <input type="hidden" id="ID" name="ID" value="<?php echo $listProductos[0]['ID'] ?>">
                         <input type="hidden" id="Juego" name="Juego" value="<?php echo $listProductos[0]['Nombre'] ?>">
                         <p class="producto__precio">Cantidad</p>
-                        <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1"> 
+                        <input type="number" id="Cantidad" name="Cantidad" class="formulario__campo"  placeholder="Cantidad" value="1" min="1" max="<?php echo $listProductos[0]['Disponible'] ?>"> 
                         <input type="hidden" id="Precio" name="Precio" value="<?php echo $listProductos[0]['Precio']?>">
                         <p class="producto__precio">Precio $<?php echo $listProductos[0]['Precio']?></p>
                         <p class="producto__precio">Disponibles: <?php echo $listProductos[0]['Disponible'] ?> Unidades</p>
