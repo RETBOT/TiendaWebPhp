@@ -7,6 +7,7 @@ require_once '../libreria/dompdf/autoload.inc.php';
 <?php
     
     $IDVENTA = $_POST['IDVENTA'];
+    $PagoFinal = 0;
       // Informacion del usuario 
     $sentencia=$pdo->prepare("SELECT * FROM `tblventas` where ID=:ID");
     $sentencia->bindParam(":ID", $IDVENTA);
@@ -31,7 +32,6 @@ require_once '../libreria/dompdf/autoload.inc.php';
     $sentencia2->bindParam(":ID", $IDVENTA);
     $sentencia2->execute();
     $listaJuegos = $sentencia2->fetchAll(PDO::FETCH_ASSOC);
-
   ?>
     <html>
         <head>
@@ -54,8 +54,7 @@ require_once '../libreria/dompdf/autoload.inc.php';
             <p>Correo electronico: <?php echo $correo ?></p>
 
             <h3 style="text-align: center;">Productos</h3>
-    <center>
-            <?php if(!empty( $_SESSION['CARRITO'])) { ?>
+    <center><?php if(!empty( $_SESSION['CARRITO'])) { ?>
     <div class="producto">
         <table style="border-collapse: collapse; text-align: center; width: 100%;"  border="5"  bordercolor="#1FC52E">
                     <tr>
@@ -67,14 +66,13 @@ require_once '../libreria/dompdf/autoload.inc.php';
                     </tr>
                     <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){ ?>
                     <tr>
-                        <td width="10%"><img width="100" height="150" class="producto__imagen" src="http://<?php echo $_SERVER['HTTP_HOST'].'/TiendaWebPhp/img/'.$listaJuegos[$indice]['ID'].".jpg" ?>" alt="imagen juego"></td>
+                        <td width="10%"><img width="100" height="150" class="producto__imagen" src="http://<?php echo $_SERVER['HTTP_HOST'].'/TiendaWebPhp/img/'.$listaJuegos[$indice]['IDPRODUCTO'].".jpg" ?>" alt="imagen juego"></td>
                         <td width="30%"><?php echo $producto['Juego'] ?></td>
                         <td width="15%"><?php echo $producto['Cantidad'] ?></td>
                         <td width="20%"><?php echo '$'.$producto['Precio'] ?></td>
                         <td width="20%"><?php echo '$'.number_format($producto['Precio']*$producto['Cantidad'],2) ?></td>  
                     </tr>
-                        <?php 
-                        $total = $total+($producto['Precio']*$producto['Cantidad']);?>
+                    <?php $PagoFinal+=($producto['Precio']*$producto['Cantidad']);  ?>
                     <?php } ?>
                     <tr>
                         <td colspan="4" align="right">Total</td>

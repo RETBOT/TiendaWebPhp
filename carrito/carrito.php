@@ -31,8 +31,7 @@
                         </td>
                         
                     </tr>
-                        <?php 
-                        $total = $total+($producto['Precio']*$producto['Cantidad']);?>
+                        <?php $total = $total+($producto['Precio']*$producto['Cantidad']); ?>
                     <?php } ?>
                     <tr>
                         <td colspan="4" align="right">Total</td>
