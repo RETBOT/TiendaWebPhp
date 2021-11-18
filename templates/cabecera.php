@@ -27,6 +27,7 @@ include '../templates/session.php';
         <a class="navegacion__enlace" href="../carrito/carrito.php">Carrito (<?php 
             echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
         ?>)</a>
+        <a class="navegacion__enlace" href="../login.php">Iniciar sesión</a>
     </nav>
 
     <?Php ?>
