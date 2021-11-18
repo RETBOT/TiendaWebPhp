@@ -8,8 +8,12 @@
         <center></center><table style="border-collapse: collapse;  border-spacing: 10px 5px;"  border="5"  bordercolor="#1FC52E">
             <form method="post" action="registro.php">
                 <tr>
+                    <td style="width: 50%;"><h3>Nombre: </h3></td>
+                    <td style="width: 50%;"><input type="text" placeholder="Nombre de usuario" autofocus="1" name="nombre" required></td>
+                </tr>
+                <tr>
                     <td style="width: 50%;"><h3>Corrreo electronico: </h3></td>
-                    <td style="width: 50%;"><input type="text" placeholder="Correo electronico" autofocus="1" name="usuario" required></td>
+                    <td style="width: 50%;"><input type="text" placeholder="Correo electronico" name="usuario" required></td>
                 </tr>
                 <tr>
                     <td style="width: 50%;"><h3>Contraseña: </h3></td>  

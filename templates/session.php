@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-
 $mensaje = ""; 
 
 if(isset($_POST['btnAccion'])){
@@ -80,7 +78,13 @@ if(isset($_POST['btnAccion'])){
                 $mensaje.= "Upss.., id no correcto ".$ID; 
             }
             break;
-    }
-}
 
+        case "usuario":{
+          $usuario = $_POST['usuario'];
+            if(!isset($_SESSION['usuario'])){
+                $_SESSION['usuario']=$usuario;
+            }
+        }break;
+        }
+    }
 ?>
