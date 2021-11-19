@@ -17,7 +17,7 @@ include 'global/conexion.php';
                     <td style="width: 50%;"><input type="password" placeholder="Contraseña" name="clave" required></td>  
                 </tr>
                 <tr>
-                    <td colspan="2" ><center><button style="width: 80%; border-radius: 1rem;" class="formulario__submit" type="submit">Iniciar sesión</button></center></td>
+                    <td colspan="2" ><center><button style="width: 80%; border-radius: 1rem;" class="formulario__submit" type="submit" name="btnAccion" value="usuario">Iniciar sesión</button></center></td>
                 </tr>
             </form>
             <form action="logica/crearcuenta.php" method="post">

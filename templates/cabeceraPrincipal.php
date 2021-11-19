@@ -18,7 +18,21 @@ include 'templates/session.php';
             <img class="header__logo" src="img/logo.png" alt="Logotipo">
         </a>
     </header>
-
+<?php 
+    if(isset($_SESSION['usuario'])) {
+     ?>
+     <nav class="navegacion">
+        <a class="navegacion__enlace navegacion__enlace--activo" href="index.php">Tienda</a>
+        <a class="navegacion__enlace" href="nosotros.php">Nosotros</a>
+        <a class="navegacion__enlace" href="carrito/carrito.php">Carrito (<?php 
+            echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
+        ?>)</a>
+         <a class="navegacion__enlace" href="logica/salir.php">Cerrar sesión</a>
+    </nav>
+     
+     <?php
+    }else{
+?>
     <nav class="navegacion">
         <a class="navegacion__enlace navegacion__enlace--activo" href="index.php">Tienda</a>
         <a class="navegacion__enlace" href="nosotros.php">Nosotros</a>
@@ -27,3 +41,4 @@ include 'templates/session.php';
         ?>)</a>
          <a class="navegacion__enlace" href="login.php">Iniciar sesión</a>
     </nav>
+    <?php } ?>
