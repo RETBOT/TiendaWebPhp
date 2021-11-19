@@ -31,6 +31,7 @@
     }         
 ?>
 <main class="contenedor">
+<h1>Productos comprados</h1>
 <div class="grid">
 <?php
     for($i=0;$i<sizeof($arrIDJuego);$i++){
