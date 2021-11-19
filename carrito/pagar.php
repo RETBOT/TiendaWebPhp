@@ -10,23 +10,45 @@ if ($_POST) {
         $total = $total + ($producto['Precio'] * $producto['Cantidad']);
     }
 }
-$sentencia = $pdo->prepare("INSERT INTO `tblventas` 
-                            (`ID`, `ClaveTransaccion`, `PaypalDatos`, `Fecha`, `Correo`, `Total`, `status`) 
-                            VALUES (NULL, :ClaveTransaccion, '', NOW(), :Correo, :Total, 'pendiente');");
+$idUsuario = 0;
 
+if(isset($_SESSION['usuario'])){
+$sentenciaUsuario = $pdo->prepare("SELECT IDCliente FROM `tblusuarios` WHERE usuario=:Usuario");
+$sentenciaUsuario->bindParam(":Usuario",$_SESSION['usuario']);
+$sentenciaUsuario->execute();
+
+$identificador=$sentenciaUsuario->fetchAll(PDO::FETCH_ASSOC);
+$idUsuario = $identificador[0]['IDCliente'];
+}
+
+$sentencia = $pdo->prepare("INSERT INTO `tblventas` 
+                            (`ID`,`IDCliente`, `ClaveTransaccion`, `PaypalDatos`, `Fecha`, `Correo`, `Total`, `status`) 
+                            VALUES (NULL, :IDCliente, :ClaveTransaccion, '', NOW(), :Correo, :Total, 'pendiente');");
+$sentencia->bindParam(":IDCliente", $idUsuario);
 $sentencia->bindParam(":ClaveTransaccion", $SID);
 $sentencia->bindParam(":Correo", $Correo);
 $sentencia->bindParam(":Total", $total);
 $sentencia->execute();
 $idVenta = $pdo->lastInsertId();
+$idUsuario = 0;
+
+if(isset($_SESSION['usuario'])){
+$sentenciaUsuario = $pdo->prepare("SELECT IDCliente FROM `tblusuarios` WHERE usuario=:Usuario");
+$sentenciaUsuario->bindParam(":Usuario",$_SESSION['usuario']);
+$sentenciaUsuario->execute();
+
+$identificador=$sentenciaUsuario->fetchAll(PDO::FETCH_ASSOC);
+$idUsuario = $identificador[0]['IDCliente'];
+}
 
 foreach ($_SESSION['CARRITO'] as $indice => $producto) {
     $sentencia = $pdo->prepare("INSERT INTO 
-        `tbldetalleventa` (`ID`, `IDVENTA`, `IDPRODUCTO`, `PRECIOUNITARIO`, `CANTIDAD`, `DESCARGADO`) 
-        VALUES (NULL, :IDVENTA, :IDPRODUCTO, :PRECIOUNITARIO, :CANTIDAD, '0');");
+        `tbldetalleventa` (`ID`, `IDVENTA`, `IDPRODUCTO`,`IDCliente`,`PRECIOUNITARIO`, `CANTIDAD`, `DESCARGADO`) 
+        VALUES (NULL, :IDVENTA, :IDPRODUCTO, :IDUSUARIO, :PRECIOUNITARIO, :CANTIDAD, '0');");
 
     $sentencia->bindParam(":IDVENTA", $idVenta);
     $sentencia->bindParam(":IDPRODUCTO", $producto['ID']);
+    $sentencia->bindParam(":IDUSUARIO",$idUsuario);
     $sentencia->bindParam(":PRECIOUNITARIO", $producto['Precio']);
     $sentencia->bindParam(":CANTIDAD", $producto['Cantidad']);
     $sentencia->execute();

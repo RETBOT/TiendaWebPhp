@@ -1,6 +1,5 @@
+
 <?php
-include '../global/config.php';
-include '../global/conexion.php';
 include '../templates/session.php';
 ?>
 
@@ -48,11 +47,4 @@ include '../templates/session.php';
     </nav>
     <?php } ?>
 
-
-
-    <?php
-          $sentencia=$pdo->prepare("Select * from tblproductos");
-          $sentencia->execute();
-          $listProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-          $total = 0;
-    ?>
+    <?Php ?>

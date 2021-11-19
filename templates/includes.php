@@ -2,5 +2,5 @@
 include '../global/config.php';
 include '../global/conexion.php';
 
-include '../templates/cabecera.php';
+include '../templates/cabeceraProducto.php';
 ?>

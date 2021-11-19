@@ -21,8 +21,6 @@ if($_POST){
 
     $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-    print_r($listaProductos);
-
     if($sentencia->rowCount()>0){
         echo "Archivo en descarga...";
 
