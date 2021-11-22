@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2021 a las 21:47:33
+-- Tiempo de generación: 22-11-2021 a las 05:44:31
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -31,6 +31,7 @@ CREATE TABLE `tbldetalleventa` (
   `ID` int(11) NOT NULL,
   `IDVENTA` int(11) NOT NULL,
   `IDPRODUCTO` int(11) NOT NULL,
+  `IDCliente` int(11) NOT NULL,
   `PRECIOUNITARIO` decimal(20,2) NOT NULL,
   `CANTIDAD` int(11) NOT NULL,
   `DESCARGADO` int(1) NOT NULL
@@ -57,16 +58,16 @@ CREATE TABLE `tblproductos` (
 --
 
 INSERT INTO `tblproductos` (`ID`, `Nombre`, `Descripcion`, `Precio`, `Cantidad`, `Imagen`, `Disponible`) VALUES
-(1, 'Minecraft', 'Explora mundos generados al azar y construye cosas increíbles, desde la más humilde de las casas hasta el más majestuoso de los castillos. Juega en el modo creativo con recursos ilimitados o extrae en las profundidades del mundo, crea armas y armaduras para defenderte de enemigos peligrosos en el modo supervivencia.', '349.00', 1, '../img/1.jpg', 300),
+(1, 'Minecraft', 'Explora mundos generados al azar y construye cosas increíbles, desde la más humilde de las casas hasta el más majestuoso de los castillos. Juega en el modo creativo con recursos ilimitados o extrae en las profundidades del mundo, crea armas y armaduras para defenderte de enemigos peligrosos en el modo supervivencia.', '349.00', 1, '../img/1.jpg', 298),
 (2, 'Resident Evil 2', 'Publicado originalmente en 1998, Resident Evil 2, uno de los juegos más icónicos de todos los tiempos, regresa completamente reinventado para las consolas de nueva generación.', '448.20', 1, '../img/2.jpg', 200),
 (3, 'Destiny', 'De los creadores de Halo® y los editores de Call of Duty®. Destiny es un shooter en primera persona con una rica historia de corte cinematográfico ambientada en enormes mundos que podrás explorar. Crea y personaliza tu guardián. Derrota a tus enemigos. Conviértete en leyenda en intensos modos de juego cooperativos, competitivos y públicos.', '200.00', 1, '../img/3.jpg', 300),
 (4, 'Bloodborne', 'Con este juego de Bloodborne vas a disfrutar de horas de diversión y de nuevos desafíos que te permitirán mejorar como gamer.\r\nInteractúa con otros jugadores\r\nPodrás disfrutar de una experiencia inigualable, ya que te permite jugar con tus amistades y compartir momentos inolvidables.\r\nDiversión sin fronteras\r\nPodrás compartir cada juego con personas de todo el mundo, ya que es posible conectarse de manera online.', '580.00', 1, '../img/4.jpg', 250),
 (5, 'Forza motorsport 6', 'Forza Motorsport 6 es la acción incesante a velocidad de simulación en el juego de carreras más hermoso y completo de esta generación. Colecciona, personaliza y pilota más de 450 coches Forzavista™ con cabinas funcionales y daños realistas. Compite en carreras épicas para 24 jugadores en 26 emplazamientos de fama mundial. Domina el clima lluvioso y las carreras nocturnas en tu camino a la victoria.', '800.00', 1, '../img/5.jpg', 250),
-(6, 'Gran Turismo 6', 'Con este juego de Gran Turismo vas a disfrutar de horas de diversión y de nuevos desafíos que te permitirán mejorar como gamer.\r\nInteractúa con otros jugadores\r\nPodrás disfrutar de una experiencia inigualable, ya que te permite jugar con tus amistades y compartir momentos inolvidables.\r\nDiversión sin fronteras\r\nPodrás compartir cada juego con personas de todo el mundo, ya que es posible conectarse de manera online.', '600.00', 1, '../img/6.jpg', 250),
+(6, 'Gran Turismo 6', 'Con este juego de Gran Turismo vas a disfrutar de horas de diversión y de nuevos desafíos que te permitirán mejorar como gamer.\r\nInteractúa con otros jugadores\r\nPodrás disfrutar de una experiencia inigualable, ya que te permite jugar con tus amistades y compartir momentos inolvidables.\r\nDiversión sin fronteras\r\nPodrás compartir cada juego con personas de todo el mundo, ya que es posible conectarse de manera online.', '600.00', 1, '../img/6.jpg', 249),
 (7, 'Street Fighter V', 'Experimenta la intensidad de la batalla cara a cara en Street Fighter® V.Elige entre 16 personajes icónicos, cada uno con su propia historia personal y desafíos de entrenamiento únicos, y luego lucha contra amigos en línea o sin conexión con una sólida variedad de opciones para cada partida.', '399.00', 1, '../img/7.jpg', 200),
 (8, 'Battlefield 4', 'Battlefield 4™ es la superproducción de acción que redefine el género, creada a partir de momentos que borran la línea que separa un juego de la gloria. Alimentado por la potencia y la fidelidad de próxima generación de Frostbite™ 3, Battlefield 4™ proporciona una experiencia visceral y dramática sin igual. Sólo en Battlefield puedes demoler los edificios que protegen a tu enemigo. Sólo en Battlefield liderarás un asalto desde la parte trasera de una patrullera. Battlefield te ofrece la libertad para hacer más y ser más, mientras sacas partido a tus puntos fuertes y te abres camino hacia la victoria. Además del sello de su modo multijugador, Battlefield 4™ presenta una campaña intensa y dramática centrada en los personajes, que comienza con la evacuación de importantes personalidades estadounidenses de Shanghái y sigue los esfuerzos de tu pelotón para lograr volver a casa. No hay nada comparable. Sumérgete en el glorioso caos de la guerra total, sólo en Battlefield.', '406.16', 1, '../img/8.jpg', 250),
-(9, 'Immortals Fenyx Rising', 'Immortals Fenyx Rising™ trae consigo una gran aventura mitológica. Juega como Fenyx, quien tiene la misión de salvar a los dioses griegos.', '479.60', 1, '../img/9.jpg', 200),
-(10, 'Far Cry 6', 'Te damos la bienvenida a Yara, un paraíso tropical congelado en el tiempo. Como dictador de Yara, Antón Castillo (Giancarlo Esposito) está decidido a recuperar la antigua gloria de su nación por todos los medios junto a su hijo, Diego, quien siempre está obedientemente a su lado. Su gobierno opresivo ha prendido la mecha de la revolución.', '1299.00', 1, '../img/10.jpg', 200),
+(9, 'Immortals Fenyx Rising', 'Immortals Fenyx Rising™ trae consigo una gran aventura mitológica. Juega como Fenyx, quien tiene la misión de salvar a los dioses griegos.', '479.60', 1, '../img/9.jpg', 198),
+(10, 'Far Cry 6', 'Te damos la bienvenida a Yara, un paraíso tropical congelado en el tiempo. Como dictador de Yara, Antón Castillo (Giancarlo Esposito) está decidido a recuperar la antigua gloria de su nación por todos los medios junto a su hijo, Diego, quien siempre está obedientemente a su lado. Su gobierno opresivo ha prendido la mecha de la revolución.', '1299.00', 1, '../img/10.jpg', 199),
 (11, 'Gears of war 5', 'Gears 5 se ha renovado por completo. Consigue esta aclamada campaña, el modo multijugador recargado y la expansión de la campaña Hivebuster como parte de Game of the Year Edition.', '599.60', 1, '../img/11.jpg', 250),
 (12, 'Grand Theft Auto 5', 'Grand Theft Auto V: Edición Premium permite disfrutar por completo de la trama de Grand Theft Auto V, acceder gratuitamente al mundo en constante evolución de Grand Theft Auto Online y a todas las mejoras y contenidos existentes, como El Golpe del Fin del Mundo, Tráfico de armas, Contrabando, Motociclistas y mucho más. También se incluye el Pack de inicio Negocios criminales, la forma más rápida de dar un impulso a tu imperio criminal en Grand Theft Auto Online.', '599.00', 1, '../img/12.jpg', 300),
 (13, 'Left 4 Dead', 'De la mano de Valve®, creadores de Counter-Strike®, Half-Life® y otros muchos juegos, llega Left 4 Dead™, una nueva aventura para PC y Xbox 360 que te meterá en la piel de uno de los cuatro \"supervivientes\" que libran una pugna de proporciones épicas contra hordas de zombis y sus terroríficas variedades mutantes especiales.\r\nAmbientado justo tras el estallido del largamente anunciado Apocalipsis zombi, la dinámica de juego cooperativa de Left 4 Dead se desarrolla en cuatro extensas \"películas\" que transcurren en diversos entornos urbanos y rurales. Cada \"película\" tiene sus objetivos generales de equipo, consta de cinco grandes mapas y permite participar a entre uno y cuatro jugadores.\r\nUtiliza la nueva tecnología bautizada como \"Director de IA\" para generar por procedimiento una experiencia diferente cada vez que se juega. Al igual que en los filmes de Hollywood, el Director hace entrar en escenas nuevos monstruos, sonidos y escenas de acción según va ajustando la dinámica de la partida a la actuación del equipo.', '299.00', 1, '../img/13.jpg', 300),
@@ -81,11 +82,34 @@ INSERT INTO `tblproductos` (`ID`, `Nombre`, `Descripcion`, `Precio`, `Cantidad`,
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tblusuarios`
+--
+
+CREATE TABLE `tblusuarios` (
+  `IDCliente` int(11) NOT NULL,
+  `Nombre` varchar(255) NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `clave` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tblusuarios`
+--
+
+INSERT INTO `tblusuarios` (`IDCliente`, `Nombre`, `usuario`, `clave`) VALUES
+(1, 'Admin', 'admin@correo.com', 'password'),
+(2, 'roberto', 'roberto@correo.com', 'password'),
+(3, 'Oscar', 'oscar@correo.com', 'password');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tblventas`
 --
 
 CREATE TABLE `tblventas` (
   `ID` int(11) NOT NULL,
+  `IDCliente` int(11) NOT NULL,
   `ClaveTransaccion` varchar(250) NOT NULL,
   `PaypalDatos` text NOT NULL,
   `Fecha` datetime NOT NULL,
@@ -104,13 +128,21 @@ CREATE TABLE `tblventas` (
 ALTER TABLE `tbldetalleventa`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `IDVENTA` (`IDVENTA`),
-  ADD KEY `IDPRODUCTO` (`IDPRODUCTO`);
+  ADD KEY `IDPRODUCTO` (`IDPRODUCTO`),
+  ADD KEY `IDUsuario` (`IDCliente`);
 
 --
 -- Indices de la tabla `tblproductos`
 --
 ALTER TABLE `tblproductos`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `tblusuarios`
+--
+ALTER TABLE `tblusuarios`
+  ADD PRIMARY KEY (`IDCliente`),
+  ADD UNIQUE KEY `Nombre` (`Nombre`);
 
 --
 -- Indices de la tabla `tblventas`
@@ -132,7 +164,13 @@ ALTER TABLE `tbldetalleventa`
 -- AUTO_INCREMENT de la tabla `tblproductos`
 --
 ALTER TABLE `tblproductos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT de la tabla `tblusuarios`
+--
+ALTER TABLE `tblusuarios`
+  MODIFY `IDCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `tblventas`
