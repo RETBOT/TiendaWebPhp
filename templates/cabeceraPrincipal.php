@@ -33,6 +33,7 @@ include 'templates/session.php';
         ?>)</a>
         <a class="navegacion__enlace" href="AgregarProducto.php">Agregar producto</a>
         <a class="navegacion__enlace" href="EliminarProducto.php">Eliminar producto</a>
+        <a class="navegacion__enlace" href="ModificarProducto.php">Modificar producto</a>
         <a class="navegacion__enlace" href="logica/salir.php">Cerrar sesión</a>
     </nav>
      
