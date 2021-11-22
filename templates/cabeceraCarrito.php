@@ -24,7 +24,7 @@ include '../templates/session.php';
 
     <?php 
     if(isset($_SESSION['usuario'])) {
-        if (strcmp($_SESSION['usuario'],"admin@correo.com")==0){
+        if (strcmp($_SESSION['usuario']['Correo'],"admin@correo.com")==0){
             ?>
             <nav class="navegacion">
             <a class="navegacion__enlace navegacion__enlace--activo" href="../index.php">Tienda</a>
@@ -34,7 +34,7 @@ include '../templates/session.php';
             ?>)</a>
             <a class="navegacion__enlace" href="../AgregarProducto.php">Agregar producto</a>
             <a class="navegacion__enlace" href="../EliminarProducto.php">Eliminar producto</a>
-             <a class="navegacion__enlace" href="../logica/salir.php">Cerrar sesión</a>
+            <a class="navegacion__enlace" href="../logica/salir.php">Cerrar sesión</a>
         </nav>
          
          <?php

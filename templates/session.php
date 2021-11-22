@@ -81,8 +81,13 @@ if(isset($_POST['btnAccion'])){
 
         case "usuario":{
           $usuario = $_POST['usuario'];
+          $contraseña = $_POST['clave'];
             if(!isset($_SESSION['usuario'])){
-                $_SESSION['usuario']=$usuario;
+                $login = array(
+                    'Correo' => $usuario,
+                    'Contraseña' => $contraseña
+                );
+                $_SESSION['usuario']=$login;
             }
         }break;
         }
