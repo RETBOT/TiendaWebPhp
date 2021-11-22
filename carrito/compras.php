@@ -7,58 +7,42 @@
     $identificador=$sentenciaUsuario->fetchAll(PDO::FETCH_ASSOC);
     //print_r($identificador[0]['IDCliente']);
     $idCliente = $identificador[0]['IDCliente'];
+    
+    $sentenciaVenta = $pdo->prepare("SELECT IDPRODUCTO,IDVENTA FROM `tbldetalleventa` WHERE IDCliente=:IDCliente");
+    $sentenciaVenta->bindParam(":IDCliente",$idCliente);
+    $sentenciaVenta->execute();
+    $venta=$sentenciaVenta->fetchAll(PDO::FETCH_ASSOC);
 
-    $sentenciaStatus = $pdo->prepare("SELECT status,ID FROM `tblventas` WHERE status = 'completo' and IDCliente = :IDCliente");
-    $sentenciaStatus->bindParam(":IDCliente",$idCliente);
-    $sentenciaStatus->execute();
-    $status=$sentenciaStatus->fetchAll(PDO::FETCH_ASSOC);
-    $arr = array();
-
-    for($i=0;$i<sizeof($status);$i++){
-        $sentenciaProducto= $pdo->prepare("SELECT IDPRODUCTO FROM `tbldetalleventa` WHERE IDVENTA = :IDVENTA");
-        $sentenciaProducto->bindParam(":IDVENTA",$status[$i]['ID']);
-        $sentenciaProducto->execute();
-        $productos=$sentenciaProducto->fetchAll(PDO::FETCH_ASSOC);
-        $arr[$i] = $productos;
-    }
- 
-    $arrIDJuego = array();
-    for($i=0;$i<sizeof($status);$i++){
-        for($j=0;$j<sizeof($status);$j++){
-          $IDJuego = $arr[$i][$j]['IDPRODUCTO'];
-          $arrIDJuego[] = $IDJuego;
-        }
-    }         
 ?>
-<main class="contenedor">
+<?php if(!empty($venta)) {?>
 <h1>Productos comprados</h1>
-<div class="grid">
-<?php
-    for($i=0;$i<sizeof($arrIDJuego);$i++){
-    $IDJuego = $arrIDJuego[$i];
-    $sentencia=$pdo->prepare("Select * from tblproductos where ID=:ID");
-    $sentencia->bindParam(":ID", $IDJuego);
-    $sentencia->execute();
-    $listProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-?>
-        <?php foreach ($listProductos as $producto) { ?>
-        <div class="producto">
-            <form action="prod/Producto.php" method="post">
-                    <img class="producto__imagen" src="../img/<?php echo $producto['ID'] ?>.jpg" alt="imagen juego">
-                    <div class="producto__informacion">
-                        <p class="producto__nombre"><?php echo $producto['Nombre'] ?></p>
-                        <p class="producto__precio">$<?php echo $producto['Precio'] ?></p> 
-                    </div>
-                    <input type="hidden" id="IDJuego" name="IDJuego" value="<?php echo $producto['ID'] ?>">
-                    <button style="width: 100%;" class="formulario__submit" type="submit">Descargar</button>
-                </form> 
-        </div>  <!--.producto-->
-        <?php } ?>
-        
+<center><table style="border-collapse: collapse;  border-spacing: 20px 10px; width:80%;"  border="5"  bordercolor="#1FC52E">
+    <tr>
+        <th><h3>ID juego</h3></th>
+        <th><h3>ID Venta</h3></th>
+        <th><h3>Estado</h3></th>
+    </tr>
+
+<?php for($i=0;$i<sizeof($venta); $i++){ ?>
+<tr>
+    <td><h3><?php echo $venta[$i]['IDPRODUCTO']  ?></h3></td>
+    <td><h3><?php echo $venta[$i]['IDVENTA']  ?></h3></td>
+    <?php 
+        $sentenciaEstado = $pdo->prepare("SELECT status FROM `tblventas` WHERE ID=:IDVENTA");
+        $sentenciaEstado->bindParam(":IDVENTA",$venta[0]['IDVENTA']);
+        $sentenciaEstado->execute();
+        $status=$sentenciaEstado->fetchAll(PDO::FETCH_ASSOC);
+        echo "<td><h3>".$status[0]["status"]."</h3></td>";
+    ?>
+
+    
+</tr>
 <?php }?>
-</div></main>
 
-
+</table></center>
+<?php }else {?>
+    <h1>Sin productos </h1>
+<?php }?>    
 <?Php 
 include '../templates/pie.php';
 ?>
